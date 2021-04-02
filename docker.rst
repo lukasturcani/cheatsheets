@@ -47,7 +47,6 @@ Command
 
     docker run --name my-container-name -it --rm ubuntu:20.04 /bin/bash
 
-
 Explanation
 -----------
 
@@ -56,14 +55,64 @@ the name ``my-container-name``. The ``-i`` option keeps stdin open
 and the ``-t`` option allocates a pseudo-tty. The ``--rm`` option
 removes the container when it exits.
 
+Create a New Conatiner from an Image which has an Entrypoint and enter it
+=========================================================================
+
+
+.. code-block:: bash
+
+    docker run --name <container> -it --rm --entrypoint /bin/bash <image>
+
+
+Start a Stopped Container
+=========================
+
+
+.. code-block:: bash
+
+    docker start <container>
+
+Where ``<container>`` can be the container's name or id.
+
+
+Delete an Image
+===============
+
+.. code-block:: bash
+
+    docker image rm <image>
+
+
+Stop a Running Container
+========================
+
+
+.. code-block:: bash
+
+    docker stop <container>
+
+Where ``<container>`` can be the container's name or id.
+
+
 
 Enter a Running Container
 =========================
 
 
-Create a New Image
-==================
+Create a Container but do not run it
+====================================
 
 
 Launch a Container from an Image and Run It in the Background
 =============================================================
+
+.. code-block:: bash
+
+
+Create an Image with a Specific Name
+====================================
+
+
+.. code-block:: bash
+
+    docker build -t <image-name> .
