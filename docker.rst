@@ -55,7 +55,7 @@ the name ``my-container-name``. The ``-i`` option keeps stdin open
 and the ``-t`` option allocates a pseudo-tty. The ``--rm`` option
 removes the container when it exits.
 
-Create a New Conatiner from an Image which has an Entrypoint and enter it
+Create a New Container from an Image which has an Entrypoint and enter it
 =========================================================================
 
 
@@ -99,14 +99,35 @@ Enter a Running Container
 =========================
 
 
+.. code-block:: bash
+
+    docker attach <container>
+
+This will attach to the process ENTRYPOINT. It will also kill the
+container if Ctrl+C is used to exit because the signal gets sent to
+the process attched to
+
+To enter a running continer with a shell and browse around
+
+.. code-block:: bash
+
+    docker exec -it <container> /bin/bash
+
+
 Create a Container but do not run it
 ====================================
+
+.. code-block:: bash
+
+    docker create --name <container> <image>
 
 
 Launch a Container from an Image and Run It in the Background
 =============================================================
 
 .. code-block:: bash
+
+    docker run --name <container> -d <image>
 
 
 Create an Image with a Specific Name
@@ -116,3 +137,16 @@ Create an Image with a Specific Name
 .. code-block:: bash
 
     docker build -t <image-name> .
+
+
+Get a Container's STDOUT/STDERR
+===============================
+
+
+.. code-block:: bash
+
+    docker logs <container>
+
+
+You can also find the logs in
+``/var/lib/docker/containers/<uuid>/<uuid>-json.log``
